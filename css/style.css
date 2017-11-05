@@ -2,3 +2,11 @@ body {
   margin: 0;
   padding: 0;
 }
+.card-placeholder {
+	background: red;
+}
+.column {
+  width: 150px;
+  float: left;
+  background: 
+}
