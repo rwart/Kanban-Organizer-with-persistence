@@ -21,11 +21,12 @@ $(function () {
 
     function createColumn() {
       // CREATING COMPONENTS OF COLUMNS
-      var $column = $('<div>').addClass('column');
+      var $column = $('<div>').addClass('column alert alert-info');
       var $columnTitle = $('<h2>').addClass('column-title').text(_this.name);
-      var $columnCardList = $('<ul>').addClass('column-card-list');
-      var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-      var $columnAddCard = $('<button>').addClass('add-card').text('Add card');
+      var $columnCardList = $('<ul>').addClass('column-card-list list-unstyled');
+      var $columnDelete = $('<button>').addClass('btn-delete close').html('&times;');
+      var $columnAddCard = $('<button>')
+        .addClass('add-card btn btn-success btn-sm').text('Add card');
 
       // ADDING EVENTS
       $columnDelete.click(function () {
@@ -33,14 +34,18 @@ $(function () {
       });
 
       $columnAddCard.click(function () {
-        _this.addCard(new Card(prompt('Enter the name of the card')));
+        var name = prompt('Enter the name of the card');
+        if (name) {
+          _this.addCard(new Card(name));
+        }
       });
 
       // CONSTRUCTION COLUMN ELEMENT
-      $column.append($columnTitle)
-              .append($columnDelete)
-              .append($columnAddCard)
-              .append($columnCardList);
+      $column
+        .append($columnDelete)
+        .append($columnTitle)
+        .append($columnCardList)
+        .append($columnAddCard);
 
       // RETURN OF CREATED COLUMN
       return $column;
@@ -65,9 +70,9 @@ $(function () {
 
     function createCard() {
       // CREATING THE BLOCKS
-      var $card = $('<li>').addClass('card');
+      var $card = $('<li>').addClass('card alert alert-warning');
       var $cardDescription = $('<p>').addClass('card-description').text(_this.description);
-      var $cardDelete = $('<button>').addClass('btn-delete').text('x');
+      var $cardDelete = $('<button>').addClass('btn-delete close').html('&times;');
 
       // BINDING TO CLICK EVENT
       $cardDelete.click(function () {
@@ -75,8 +80,9 @@ $(function () {
       });
 
       // COMBINING BLOCKS AND RETURNING THE CARD
-      $card.append($cardDelete)
-            .append($cardDescription);
+      $card
+        .append($cardDelete)
+        .append($cardDescription);
 
       return $card;
     }
@@ -102,14 +108,22 @@ $(function () {
     $('.column-card-list').sortable({
       connectWith: '.column-card-list',
       placeholder: 'card-placeholder',
+      forcePlaceholderSize: true,
+      dropOnEmpty: true,
+      activate: function (event, ui) {
+        var height = ui.item.css('height');
+        ui.placeholder.css('height', height);
+      },
     }).disableSelection();
   }
 
   $('.create-column')
     .click(function () {
       var name = prompt('Enter a column name');
-      var column = new Column(name);
-      board.addColumn(column);
+      if (name) {
+        var column = new Column(name);
+        board.addColumn(column);
+      }
     });
 
   // CREATING COLUMNS
