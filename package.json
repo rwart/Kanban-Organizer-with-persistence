@@ -1,5 +1,5 @@
 {
-  "name": "Kanban-Organizer",
+  "name": "Kanban-Organizer-with-persistence",
   "version": "1.0.0",
   "description": "",
   "main": "Gruntfile.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rwart/Kanban-Organizer.git"
+    "url": "git+https://github.com/rwart/Kanban-Organizer-with-persistence.git"
   },
   "author": "rwart",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/rwart/Kanban-Organizer/issues"
+    "url": "https://github.com/rwart/Kanban-Organizer-with-persistence/issues"
   },
-  "homepage": "https://github.com/rwart/Kanban-Organizer#readme",
+  "homepage": "https://github.com/rwart/Kanban-Organizer-with-persistence#readme",
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-browser-sync": "^2.2.0",

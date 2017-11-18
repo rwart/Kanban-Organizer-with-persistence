@@ -1,1 +1,1 @@
-Kanban Organizer
+Kanban Organizer with persistence
