@@ -1,29 +1,29 @@
-// GENERAL FUNCTIONS
-function randomString() {
+$.ajaxSetup({
+  headers: myHeaders,
+  cache: false,
+});
+
+$.ajax({
+  url: baseUrl + '/board',
+  method: 'GET',
+  success: function (response) {
+    setupColumns(response.columns);
+  },
+});
+
+function setupColumns(columnsData) {
   'use strict';
-  var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  var str = '';
-  for (var i = 0; i < 10; i++) {
-    str += chars[Math.floor(Math.random() * chars.length)];
+  columnsData.forEach(function (columnData) {
+    var col = new Column(columnData.id, columnData.name);
+    board.addColumn(col);
+    setupCards(col, columnData.cards);
+  });
+
+  function setupCards(col, cardsData) {
+    cardsData.forEach(function (cardData) {
+      var card = new Card(cardData.id, cardData.name);
+      card.$element.attr('data-idColumn', cardData.bootcamp_kanban_column_id);
+      col.addCard(card);
+    });
   }
-
-  return str;
 }
-
-// CREATING COLUMNS
-var todoColumn = new Column('To do');
-var doingColumn = new Column('Doing');
-var doneColumn = new Column('Done');
-
-// ADDING COLUMNS TO THE BOARD
-board.addColumn(todoColumn);
-board.addColumn(doingColumn);
-board.addColumn(doneColumn);
-
-// CREATING CARDS
-var card1 = new Card('New task');
-var card2 = new Card('Create kanban boards');
-
-// ADDING CARDS TO COLUMNS
-todoColumn.addCard(card1);
-doingColumn.addCard(card2);

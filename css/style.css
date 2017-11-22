@@ -3,7 +3,7 @@ body {
 }
 
 .card-placeholder {
-	background: #CCC;
+  background: #CCC;
   margin-bottom: 5px;
   min-height: 35px;
 }
@@ -15,7 +15,7 @@ body {
   width: 270px;
 }
 
-.column-title {
+.column-name {
   font-size: 20px;
   margin-top: 5px;
   overflow: auto;
@@ -31,14 +31,40 @@ body {
   padding: 5px;
 }
 
-.card-description {
+.card-name {
   overflow: auto;
   word-break: break-all;
 }
+
 .card:hover, .card:focus {
   opacity: 0.7;
 }
+
 ul.column-card-list {
   margin-bottom: 5px;
   min-height: 35px;  /* necessary for droppable */
+}
+
+.card button.btn-delete.close.card-edit,
+.card button.btn-delete.close.card-close,
+.column button.btn-delete.close.column-edit,
+.column button.btn-delete.close.column-close {
+  display: none;
+}
+
+.card:hover button.btn-delete.close.card-edit,
+.card:hover button.btn-delete.close.card-close,
+.column:hover button.btn-delete.close.column-edit,
+.column:hover button.btn-delete.close.column-close,
+.card:focus button.btn-delete.close.card-edit,
+.card:focus button.btn-delete.close.card-close,
+.column:focus button.btn-delete.close.column-edit,
+.column:focus button.btn-delete.close.column-close {
+  display:inline-block;
+}
+
+.card button.btn-delete.close.card-edit,
+.column button.btn-delete.close.column-edit {
+  padding: 2px;
+  font-size: 12px;
 }
