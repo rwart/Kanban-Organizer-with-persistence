@@ -15,11 +15,11 @@ function Card(id, name) {
       .addClass('card-name')
       .text(_this.name);
     var $cardEdit = $('<button>')
-      .addClass('btn-delete close card-edit')
+      .addClass('close')
       .html('<span class="glyphicon glyphicon-edit"></span>');
     var $cardDelete = $('<button>')
-      .addClass('btn-delete close card-close')
-      .html('&times;');
+      .addClass('close')
+      .html('<span class="glyphicon glyphicon-remove"></span>');
 
     // BINDING TO CLICK EVENT
     $cardEdit.click(function () {

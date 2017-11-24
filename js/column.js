@@ -17,11 +17,11 @@ function Column(id, name) {
     var $columnCardList = $('<ul>')
       .addClass('column-card-list list-unstyled');
     var $columnEdit = $('<button>')
-      .addClass('btn-delete close column-edit')
+      .addClass('close')
       .html('<span class="glyphicon glyphicon-edit"></span>');
     var $columnDelete = $('<button>')
-      .addClass('btn-delete close column-close')
-      .html('&times;');
+      .addClass('close')
+      .html('<span class="glyphicon glyphicon-remove"></span>');
     var $columnAddCard = $('<button>')
       .addClass('add-card btn btn-success btn-sm')
       .text('Add card');
@@ -35,7 +35,7 @@ function Column(id, name) {
       _this.removeColumn();
     });
 
-    $columnAddCard.click(function () {
+    $columnAddCard.click(function (event) {
       var cardName = prompt('Enter the name of the card');
       event.preventDefault();
       if (cardName) {
