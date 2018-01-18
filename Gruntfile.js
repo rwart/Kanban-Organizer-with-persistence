@@ -13,7 +13,7 @@ module.exports = function (grunt) {
             },
         },
     },
-    browserSync: { //
+    browserSync: { // path to files can not contain "(" or ")"
         dev: {
             bsFiles: {
                 src: [
